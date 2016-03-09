@@ -3,7 +3,11 @@ class Admin::CoursesController < ApplicationController
   before_action :load_subjects, only: [:new, :create, :edit]
 
   def index
-    @courses = @courses.recent
+    @courses = @courses.normal.recent
+  end
+
+  def new
+    @parent_id = params[:parent_id]
   end
 
   def create
@@ -44,7 +48,7 @@ class Admin::CoursesController < ApplicationController
   private
   def course_params
     params.require(:course).permit :name, :description, :start_date,
-      :end_date, subject_ids: []
+      :end_date, :parent_id, subject_ids: []
   end
 
   def load_subjects

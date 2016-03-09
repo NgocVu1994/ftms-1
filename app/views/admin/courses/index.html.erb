@@ -1,10 +1,5 @@
 <div id="courses">
   <h1 class="center"><%= t "layouts.admin.courses" %></h1>
-  <div class="new-course-form">
-    <div id="nav_course">
-      <%= link_to t("courses.buttons.admin.create"), new_admin_course_path, class: "btn btn-success" %>
-    </div>
-  </div>
   <div id="course_section">
     <%= render @courses %>
   </div>

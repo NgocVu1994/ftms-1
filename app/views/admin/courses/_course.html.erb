@@ -2,8 +2,18 @@
   <hr>
   <div id="course-<%= course.id %>">
     <div class="col-md-10">
-      <h4><%= link_to course.name, admin_course_path(course) %></h4>
-      <p><%= course.description %></p>
+      <% unless course.parent.nil? %>
+        <h4><%= link_to course.parent.name, admin_course_path(course) %></h4>
+        <p><%= course.parent.description %></p>
+      <% end %>
+      <p>
+        <i><%= t "courses.start_date" %></i>
+        <%= course.start_date %>
+      </p>
+      <p>
+        <i><%= t "courses.end_date" %></i>
+        <%= course.end_date %>
+      </p>
     </div>
     <div class="col-md-2">
       <%= link_to t("button.edit"), edit_admin_course_path(course),

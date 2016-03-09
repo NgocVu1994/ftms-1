@@ -1,0 +1,16 @@
+<% provide :title, t("courses.course_masters") %>
+
+<% if @course_master.nil? %>
+  <div class="title">
+    <h2><%= t "courses.no_course" %></h2>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-8 center">
+      <h1><%= @course_master.name %></h1>
+      <div class="description">
+        <%= @course_master.description %>
+      </div>
+    </div>
+  </div>
+<% end %>

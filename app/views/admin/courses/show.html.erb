@@ -9,7 +9,12 @@
     <div class="col-md-8">
       <div class="row">
         <div class="col-md-8 col-md-offset-2 title">
-          <h1><%= @course.name %></h1>
+          <% unless  @course.parent.nil? %>
+            <h1><%= @course.parent.name %></h1>
+            <div class="description">
+              <%= @course.parent.description %>
+            </div>
+          <% end %>
         </div>
         <div class="col-md-2 title">
           <% if @course.init? %>
@@ -31,9 +36,6 @@
           <%= @course.start_date.strftime Settings.date_course_format unless @course.start_date.nil? %><br>
           <strong><%= t "subjects.end_date" %></strong>
           <%= @course.end_date.strftime Settings.date_course_format unless @course.end_date.nil? %>
-          <div class="description">
-            <%= @course.description %>
-          </div>
         </div>
       </div>
       <div class="list-subject">

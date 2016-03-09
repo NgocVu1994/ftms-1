@@ -1,0 +1,12 @@
+<div class="row">
+  <%= render "shared/error_messages", object: @course_master %>
+  <div class="col-md-6">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", required: true %>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control", required: true %>
+    <br>
+    <%= f.submit (f.object.new_record? ? t("courses.buttons.admin.create")
+      : t("courses.buttons.admin.update")), class: "btn btn-primary" %>
+  </div>
+</div>

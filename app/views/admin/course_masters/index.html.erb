@@ -1,0 +1,33 @@
+<div id="courses">
+  <h1 class="center"><%= t "layouts.admin.course_masters" %></h1>
+  <div class="new-course-form">
+    <div id="nav_course">
+      <%= link_to t("courses.buttons.admin.create"),
+        new_admin_course_master_path, class: "btn btn-success" %>
+    </div>
+  </div>
+  <div id="course_section">
+    <div class="course_record row">
+      <hr>
+      <% @course_masters.each do |course_master| %>
+        <div id="course_master-<%= course_master.id %>">
+          <div class="col-md-9">
+            <h4><%= link_to course_master.name,
+              admin_course_master_path(course_master) %></h4>
+            <p><%= course_master.description %></p>
+          </div>
+          <div class="col-md-3">
+            <%= link_to t("courses.buttons.admin.create_course"),
+              new_admin_course_path(parent_id: course_master.id),
+              class: "btn btn-default btn-success" %>
+            <%= link_to t("button.edit"), edit_admin_course_master_path(course_master),
+              class: "btn btn-default btn btn-primary" %>
+            <%= link_to t("button.delete"), admin_course_master_path(course_master),
+              method: :delete, data: {confirm: t("messages.delete.confirm")},
+              class: "btn btn-default btn-danger" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

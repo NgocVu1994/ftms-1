@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20160225030820) do
   create_table "courses", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
+    t.integer  "parent_id",   limit: 4
     t.integer  "status",      limit: 4,     default: 0
     t.date     "start_date"
     t.date     "end_date"

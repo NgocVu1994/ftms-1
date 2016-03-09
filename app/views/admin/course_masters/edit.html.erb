@@ -1,0 +1,3 @@
+<%= form_for @course_master, url: admin_course_master_path(@course_master), method: :patch do |f| %>
+  <%= render partial: "form", locals: {f: f} %>
+<% end %>
