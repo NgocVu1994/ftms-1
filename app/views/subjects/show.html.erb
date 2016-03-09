@@ -30,8 +30,8 @@
         <% @user_subject.course_subject.tasks.each_with_index do |task, index| %>
           <h4><%= index + 1 %>.&nbsp;<%= task.name %></h4>
           <p><%= task.description %></p>
-          <p><b><%= link_to t("tasks.update"), edit_user_task_path(task) %></b></p>
           <% task.user_tasks.each do |user_task| %>
+            <p><b><%= link_to t("tasks.update"), edit_user_task_path(user_task) %></b></p>
             <p><%= t "tasks.estimated_time" %>:
               <span class="text-danger"><%= user_task.estimated_time %>
                 &nbsp;<%= t "tasks.hours" %>
@@ -52,6 +52,9 @@
                   <%= user_task.progress %> %
                 </div>
               </div>
+            <p><%= t "tasks.status" %>:
+              <span class="text-danger"><%= user_task.status %>
+              </span>
             </p>
           <% end %>
           <hr>

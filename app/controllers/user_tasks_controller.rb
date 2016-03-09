@@ -1,11 +1,11 @@
 class UserTasksController < ApplicationController
   load_and_authorize_resource
-  before_action :load_subject, only: [:edit, :update]
+  before_action :load_user_subject_course, only: [:update]
 
   def update
     if @user_task.update_attributes user_task_params
       flash[:success] = flash_message "updated"
-      redirect_to subject_path(@subject)
+      redirect_to course_subject_path @user_course, @user_subject
     else
       flash[:failed] = flash_message "not updated"
       render :edit
@@ -18,7 +18,8 @@ class UserTasksController < ApplicationController
       :redmine_task_id, :status, :progress
   end
 
-  def load_subject
-    @subject = @user_task.user_subject.course_subject.subject
+  def load_user_subject_course
+    @user_subject = @user_task.user_subject
+    @user_course = @user_task.user_subject.course
   end
 end

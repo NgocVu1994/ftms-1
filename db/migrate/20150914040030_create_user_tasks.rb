@@ -8,7 +8,7 @@ class CreateUserTasks < ActiveRecord::Migration
       t.integer :spent_time
       t.integer :estimated_time
       t.integer :redmine_task_id
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps null: false
     end
