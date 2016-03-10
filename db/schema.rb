@@ -231,9 +231,9 @@ ActiveRecord::Schema.define(version: 20160225030820) do
     t.integer  "spent_time",      limit: 4
     t.integer  "estimated_time",  limit: 4
     t.integer  "redmine_task_id", limit: 4
-    t.integer  "status",          limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "status",          limit: 4, default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "user_tasks", ["task_id"], name: "index_user_tasks_on_task_id", using: :btree

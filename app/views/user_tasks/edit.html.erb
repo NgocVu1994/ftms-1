@@ -17,7 +17,12 @@
       <%= f.label :progress %>
       <%= f.number_field :progress, min: 0, max: 100, class: "form-control" %>
 
-      <%= f.submit t("tasks.update"), class: "btn btn-primary" %>
+      <%= f.label :status %>
+      <%= f.select :status, options_for_select([[@statuses.init, @status_values.init], 
+        [@statuses.started, @status_values.started], [@statuses.in_progress, @status_values.in_progress], 
+        [@statuses.resolved, @status_values.resolved], 
+        [@statuses.closed, @status_values.closed]], selected: params[:user_task_status]) %>
     </div>
+    <%= f.submit t("tasks.update"), class: "btn btn-primary" %>
   </div>
 <% end %>

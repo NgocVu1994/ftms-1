@@ -5,6 +5,19 @@ defaults: &defaults
   languages:
     en: "en"
     jp: "ja"
+  tasks:
+    values:
+      init: 0
+      started: 1
+      in_progress: 2
+      resolved: 3
+      closed: 4
+    statuses:
+      init: "New"
+      in_progress: "In progress"
+      closed: "Closed"
+      started: "Started"
+      resolved: "Resolved"
   flag_size: "20x15"
   image_user_size: "30x30"
   finish: "finish"

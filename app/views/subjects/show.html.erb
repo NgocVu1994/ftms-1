@@ -30,8 +30,11 @@
         <% @user_subject.course_subject.tasks.each_with_index do |task, index| %>
           <h4><%= index + 1 %>.&nbsp;<%= task.name %></h4>
           <p><%= task.description %></p>
-          <p><b><%= link_to t("tasks.update"), edit_user_task_path(task) %></b></p>
           <% task.user_tasks.each do |user_task| %>
+            <p>
+              <b><%= link_to t("tasks.update"), edit_user_task_path(user_task, user_task_status: user_task.status)%>
+              </b>
+            </p>
             <p><%= t "tasks.estimated_time" %>:
               <span class="text-danger"><%= user_task.estimated_time %>
                 &nbsp;<%= t "tasks.hours" %>
@@ -52,6 +55,21 @@
                   <%= user_task.progress %> %
                 </div>
               </div>
+            <p><%= t "tasks.status" %>:
+              <span class="text-danger">
+                <% case user_task.status %>
+                  <% when Settings.tasks.values.init %>
+                    <i><%= Settings.tasks.statuses.init %></i>
+                  <% when Settings.tasks.values.started %>
+                    <i><%= Settings.tasks.statuses.started %></i>
+                  <% when Settings.tasks.values.in_progress %>
+                    <i><%= Settings.tasks.statuses.in_progress %></i>
+                  <% when Settings.tasks.values.resolved %>
+                    <i><%= Settings.tasks.statuses.resolved %></i>
+                  <% when Settings.tasks.values.closed %>
+                   <i><%= Settings.tasks.statuses.closed %></i>
+                <% end %>
+              </span>
             </p>
           <% end %>
           <hr>
