@@ -42,6 +42,29 @@ class Course < ActiveRecord::Base
   scope :normal,->{where.not parent_id: nil}
 
   accepts_nested_attributes_for :user_courses, allow_destroy: true
+  accepts_nested_attributes_for :course_subjects, allow_destroy: true
+
+  def get_course_subjects
+    list_course_subjects = Array.new
+    Subject.all.each do |subject|
+      if present_course_subjects.has_key? subject.id
+        course_subject = present_course_subjects[subject.id]
+      else
+        course_subject = CourseSubject.new subject_id: subject.id
+      end
+      list_course_subjects << course_subject
+    end
+    list_course_subjects
+  end
+
+  def present_course_subjects
+    hash_course_subjects = Hash.new
+    course_subjects.each do |course_subject|
+      hash_course_subjects[course_subject.subject_id] = course_subject
+    end
+    hash_course_subjects
+  end
+
 
   def create_user_subjects_when_start_course
     create_user_subjects user_courses, course_subjects, id, false

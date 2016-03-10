@@ -21,7 +21,7 @@ class Admin::CoursesController < ApplicationController
       render :new
     end
   end
-
+  
   def update
     if @course.update_attributes course_params
       flash[:success] = flash_message "updated"
@@ -48,7 +48,7 @@ class Admin::CoursesController < ApplicationController
   private
   def course_params
     params.require(:course).permit :name, :description, :start_date,
-      :end_date, :parent_id, subject_ids: []
+      :end_date, :parent_id, course_subjects_attributes: [:id, :subject_id, :_destroy]
   end
 
   def load_subjects

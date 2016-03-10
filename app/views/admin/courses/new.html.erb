@@ -12,14 +12,23 @@
         : t("courses.buttons.admin.update")), class: "btn btn-primary" %>
     </div>
     <div class="col-md-6">
-      <%= f.collection_check_boxes :subject_ids, @subjects, :id, :name do |b| %>
-        <div class="row">
-          <%= b.label do %>
-            <%= b.check_box %>&nbsp;
-            <%=  b.text %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th><%= t "name" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= f.fields_for :course_subjects, @course.get_course_subjects  do |builder| %>
+            <tr> 
+              <td><%= builder.check_box :_destroy, {}, 0, 1 %></td>
+              <td><%= builder.object.subject.name %></td>
+            </tr>
+            <%= builder.hidden_field :subject_id, value: builder.object.subject_id %>
           <% end %>
-        </div>
-      <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 <% end %>
