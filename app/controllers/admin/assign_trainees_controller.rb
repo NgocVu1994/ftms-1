@@ -2,7 +2,7 @@ class Admin::AssignTraineesController < ApplicationController
   load_and_authorize_resource :course
 
   def edit
-    @users = User.all
+    @users = User.load_trainee
     @users.each do |user|
       @course.user_courses.new user: user unless @course.user_ids.include? user.id
     end

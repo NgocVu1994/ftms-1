@@ -47,8 +47,10 @@
           <h4><%= index + 1 %>.&nbsp;<%= user_task.task.name %></h4>
           <p><%= user_task.task.description %></p>
           <% if @user_subject.progress? %>
-            <p><b><%= link_to t("tasks.update"), edit_user_task_path(user_task,
-              user_task_status: user_task.status)%></b></p>
+            <% if can? :update, user_task %>
+              <p><b><%= link_to t("tasks.update"), edit_user_task_path(user_task,
+                user_task_status: user_task.status) %></b></p>
+            <% end %>
           <% end %>
           <p><%= t "tasks.estimated_time" %>:
             <span class="text-danger"><%= user_task.estimated_time %>

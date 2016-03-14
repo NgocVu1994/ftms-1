@@ -4,8 +4,8 @@ namespace :db do
     Rake::Task["db:migrate:reset"].invoke
 
     puts "Creating User"
-    Fabricate :user, email: "admin@tms.com"
-    Fabricate :user, email: "supervisor@tms.com"
+    Fabricate :user, email: "admin@tms.com", is_trainee: false
+    Fabricate :user, email: "supervisor@tms.com", is_trainee: false
     30.times do
       Fabricate :user
     end

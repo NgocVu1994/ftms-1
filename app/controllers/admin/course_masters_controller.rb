@@ -1,4 +1,5 @@
 class Admin::CourseMastersController < ApplicationController
+  authorize_resource :course
   before_action :load_course_master, except: [:index, :new, :create]
 
   def index

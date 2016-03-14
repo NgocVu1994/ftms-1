@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable, :validatable
 
   scope :free_trainees, ->(course_id){where QUERY, course_id: course_id}
+  scope :load_trainee, -> {where is_trainee: true}
 
   def total_done_tasks user, course
     done_tasks = UserSubject.load_user_subject(user.id, course.id).map(&:user_tasks).flatten.count
