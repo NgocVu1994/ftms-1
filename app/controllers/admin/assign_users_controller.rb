@@ -1,11 +1,8 @@
-class Admin::AssignTraineesController < ApplicationController
+class Admin::AssignUsersController < ApplicationController
   load_and_authorize_resource :course
-
   def edit
-    @users = User.all
-    @users.each do |user|
-      @course.user_courses.new user: user unless @course.user_ids.include? user.id
-    end
+    @trainers = Role.find_by(name: "trainer").users
+    @trainees = Role.find_by(name: "trainee").users
   end
 
   def update
@@ -16,7 +13,7 @@ class Admin::AssignTraineesController < ApplicationController
     end
     redirect_to admin_course_path @course
   end
-
+  
   private
   def course_params
     params.require(:course).permit user_courses_attributes: [:id, :user_id, :_destroy]

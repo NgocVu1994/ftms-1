@@ -49,7 +49,6 @@ class User < ActiveRecord::Base
   def leader_course course
     return course.user_courses.find_by(leader_id: self.id) ? true :false
   end
-
   private
   def password_required?
     new_record? ? super : false

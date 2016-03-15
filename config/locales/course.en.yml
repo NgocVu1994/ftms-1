@@ -9,6 +9,8 @@ en:
         delete_confirm: "Are you sure"
         start: "Start"
         assigntrainee: "Assign Trainee"
+        assigntrainer: "Assign Trainer"
+        assignusers: "Assign Users"
         finish: "Finish"
         finished: "Finished"
         create_course: "Create course"

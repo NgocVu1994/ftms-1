@@ -1,0 +1,25 @@
+<h1><%= t "courses.buttons.admin.assignusers" %></h1>
+<div>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#trainee" aria-controls="trainee"
+      role="tab" data-toggle="tab"><%= t "courses.buttons.admin.assigntrainee" %></a></li>
+    <li role="presentation"><a href="#manager" aria-controls="manager"
+      role="tab" data-toggle="tab"><%= t "courses.buttons.admin.assigntrainer" %></a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade active in" id="trainee">
+      <%= form_for @course, url: admin_course_assign_users_path, method: :patch do |f| %>
+        <%= render "shared/error_messages", object: @course %>
+        <%= render "form_assign", f: f, users: @trainees, course_users: 
+          @course.user_courses.map(&:user) %>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="manager">
+      <%= form_for @course, url: admin_course_assign_users_path, method: :patch do |f| %>
+        <%= render "shared/error_messages", object: @course %>
+        <%= render "form_assign", f: f, users: @trainers, course_users: 
+          @course.user_courses.map(&:user)%>
+      <% end %>
+    </div>
+  </div>
+</div>
