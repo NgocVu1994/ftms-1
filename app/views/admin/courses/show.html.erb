@@ -36,7 +36,7 @@
           <%= @course.end_date.strftime Settings.date_course_format unless @course.end_date.nil? %>
         </div>
         <div class="information col-md-6">
-          <%= link_to t("courses.buttons.admin.assigntrainee"), edit_admin_course_assign_trainees_path(@course),
+          <%= link_to t("courses.buttons.admin.assignusers"), edit_admin_course_assign_users_path(@course),
             class: "btn btn-info" %>
         </div>
       </div>
@@ -69,7 +69,11 @@
           <% @course.users.each do |user| %>
             <li class="list-group-item" id="infor_member">
               <%= image_tag "profile.png" %>
-              <%= link_to user.name, user_path(user) %>
+              <% if user.role.name == "trainer" %>
+                <%= link_to user.name, user_path(user), class: "btn btn-danger" %>
+              <% else %>
+                <%= link_to user.name, user_path(user) %>
+              <% end %>
             </li>
           <% end %>
         </div>

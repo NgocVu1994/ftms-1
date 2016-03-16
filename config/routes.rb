@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :course_masters
     resources :courses do
       resources :subjects
-      resource :assign_trainees
+      resource :assign_users
       resource :change_status_courses, only: :update
     end
     resources :roles
