@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   belongs_to :trainer, class_name: User.name, foreign_key: :trainer_id
   belongs_to :type
   belongs_to :university
+  belongs_to :role
 
   has_many :user_courses, dependent: :destroy
   has_many :user_subjects, dependent: :destroy
@@ -17,8 +18,6 @@ class User < ActiveRecord::Base
   has_many :course_subjects, through: :user_subjects
   has_many :tasks, through: :user_tasks
   has_one :profile
-  has_many :user_roles, dependent: :destroy
-  has_many :roles, through: :user_roles
   has_one :evaluations
   has_many :trainees, class_name: User.name
   has_many :course_leaders, class_name: UserCourse.name,

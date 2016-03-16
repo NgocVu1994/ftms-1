@@ -25,6 +25,12 @@ defaults: &defaults
   position:
     check_position: 0
     index: 1
+  roles:
+    actions:
+      - "create"
+      - "read"
+      - "update"
+      - "destroy"
 development:
   <<: *defaults
   neat_setting: 800

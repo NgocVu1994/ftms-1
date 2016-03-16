@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225030820) do
+ActiveRecord::Schema.define(version: 20160315030506) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -91,10 +91,11 @@ ActiveRecord::Schema.define(version: 20160225030820) do
   add_index "notes", ["evaluation_id"], name: "index_notes_on_evaluation_id", using: :btree
 
   create_table "permissions", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "role_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "model_class", limit: 255
+    t.string   "action",      limit: 255
+    t.integer  "role_id",     limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "permissions", ["role_id"], name: "index_permissions_on_role_id", using: :btree
@@ -198,16 +199,6 @@ ActiveRecord::Schema.define(version: 20160225030820) do
 
   add_index "user_courses", ["user_id", "course_id"], name: "index_user_courses_on_user_id_and_course_id", unique: true, using: :btree
 
-  create_table "user_roles", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "role_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "user_roles", ["role_id"], name: "index_user_roles_on_role_id", using: :btree
-  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
-
   create_table "user_subjects", force: :cascade do |t|
     t.integer  "status",            limit: 4, default: 0
     t.integer  "user_id",           limit: 4
@@ -244,6 +235,7 @@ ActiveRecord::Schema.define(version: 20160225030820) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255
+    t.integer  "role_id",                limit: 4
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "email",                  limit: 255, default: "", null: false
@@ -260,6 +252,7 @@ ActiveRecord::Schema.define(version: 20160225030820) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "course_subjects", "subjects"
@@ -270,8 +263,6 @@ ActiveRecord::Schema.define(version: 20160225030820) do
   add_foreign_key "profiles", "users"
   add_foreign_key "task_masters", "subjects"
   add_foreign_key "tasks", "course_subjects", on_delete: :cascade
-  add_foreign_key "user_roles", "roles"
-  add_foreign_key "user_roles", "users"
   add_foreign_key "user_subjects", "course_subjects", on_delete: :cascade
   add_foreign_key "user_subjects", "courses"
   add_foreign_key "user_subjects", "user_courses"
@@ -279,4 +270,5 @@ ActiveRecord::Schema.define(version: 20160225030820) do
   add_foreign_key "user_tasks", "tasks", on_delete: :cascade
   add_foreign_key "user_tasks", "user_subjects"
   add_foreign_key "user_tasks", "users"
+  add_foreign_key "users", "roles"
 end
