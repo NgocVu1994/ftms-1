@@ -2,7 +2,7 @@
   <dl class="dl-horizontal">
     <dt><strong><%= t "courses.name" %></strong></dt>
     <dd><%= course.finish? ? course.name :
-      (link_to course.name, course_user_subject_path(course, @user_subject)) %></dd>
+      (link_to course.name, course_path(course)) %></dd>
 
     <dt><strong><%= t "courses.description" %></strong></dt>
     <dd><%= course.description %></dd>
