@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   filter :locale
-  root "courses#show"
+  root "static_pages#home"
 
   devise_for :users, path: "auth", path_names: {sign_in: "login", sign_out: "logout"}
 
   namespace :admin do
-    root "static_pages#home"
     resources :course_masters
     resources :courses do
       resources :subjects
