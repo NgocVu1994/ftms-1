@@ -1,0 +1,2 @@
+Fabricator(:type) do
+end

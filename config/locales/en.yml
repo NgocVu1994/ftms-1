@@ -111,6 +111,8 @@ en:
     edit: "Edit"
     delete: "Delete"
     new: "New"
+    create: "Create"
+    update: "Update"
   roles:
     allocate: "Allocate"
     roles: "Roles"

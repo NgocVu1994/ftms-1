@@ -27,6 +27,7 @@
  *= require admin/evaluation_template
  *= require admin/task
  *= require admin/evaluation
+ *= require admin/type
  *= require bootstrap-datepicker3
  */
 

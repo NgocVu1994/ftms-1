@@ -44,6 +44,7 @@ defaults: &defaults
     rank: "ranks"
     evaluation: "evaluations"
     university: "university"
+    type: "type"
 development:
   <<: *defaults
   neat_setting: 800

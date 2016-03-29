@@ -16,17 +16,6 @@ namespace :db do
       Fabricate :user
     end
 
-    puts "Creating CourseMaster and Course"
-    5.times do
-      Fabricate :course
-    end
-    Course.all.each do |course_master|
-      2.times do
-        Fabricate :course, name: course_master.name,
-          description: course_master.description, parent_id: course_master.id
-      end
-    end
-
     puts "Creating Subject"
     10.times do
       Fabricate :subject
@@ -57,5 +46,39 @@ namespace :db do
     5.times do
       Fabricate :rank
     end
+
+    puts "Create Universities"
+    Fabricate :university, name: "Vietnam National University, Hanoi"
+    Fabricate :university, name: "Hanoi University of Science and Technology"
+    Fabricate :university, name: "Foreign Trade University"
+    Fabricate :university, name: "Hanoi University of Industry"
+
+    puts "Create Programming Languages"
+    Fabricate :programming_language, name: "Ruby"
+    Fabricate :programming_language, name: "PHP"
+    Fabricate :programming_language, name: "Android"
+    Fabricate :programming_language, name: "Java"
+    Fabricate :programming_language, name: "C"
+
+    puts "Create Types"
+    Fabricate :type, name: "Intern"
+    Fabricate :type, name: "VPG"
+    Fabricate :type, name: "JPG"
+    Fabricate :type, name: "New dev"
+    Fabricate :type, name: "Tester"
+
+    puts "Create Progress"
+    Fabricate :progress, name: "Tutorial"
+    Fabricate :progress, name: "Project demo"
+    Fabricate :progress, name: "Project 1"
+    Fabricate :progress, name: "Project 2"
+    Fabricate :progress, name: "Git"
+
+    puts "Create Status"
+    Fabricate :status, name: "Inprogress"
+    Fabricate :status, name: "Finish"
+    Fabricate :status, name: "Prepare project"
+    Fabricate :status, name: "Jointed project"
+
   end
 end

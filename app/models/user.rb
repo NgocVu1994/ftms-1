@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   belongs_to :progress
   belongs_to :status
   belongs_to :trainer, class_name: User.name, foreign_key: :trainer_id
-  belongs_to :type
+  belongs_to :user_type
   belongs_to :university
   belongs_to :role
 

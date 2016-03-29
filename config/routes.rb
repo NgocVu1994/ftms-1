@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :evaluation_templates
     resources :ranks
     resources :universities, except: :show
+    resources :user_types, except: :show
   end
 
   resources :courses, only: :show do
