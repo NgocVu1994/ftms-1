@@ -14,12 +14,25 @@
     .avatar {
       width: 10%;
     }
+
     .description {
       width: 20%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 150px;
+      max-width: 250px;
     }
+
     .content {
-      width: 20%
+      width: 20%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 150px;
+      max-width: 250px;
     }
+
     .during_time, .action {
       width: 20%;
       text-align: center;
@@ -32,5 +45,11 @@
     .remove-field {
       padding-left: 0px;
     }
+  }
+}
+
+#admin-subject-show {
+  .subject-name {
+    margin-top: 0px;
   }
 }

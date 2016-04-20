@@ -1,5 +1,7 @@
 en:
   subjects:
+    breadcrumb:
+      subjects: "Subjects"
     new_subjects: "New subjects: "
     in_progress_subjects: "In progress subjects: "
     finish_subject: "Finished subjects: "

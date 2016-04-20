@@ -4,14 +4,9 @@
   </td>
   <td class="avatar"><%= image_target_tag subject %></td>
   <td class="description"><%= subject.description %></td>
-  <td class="content"><%= subject.content.html_safe %></td>
-  <td class="during_time"><%= subject.during_time %></td>
-  <td class="action">
-    <%= link_to t("subjects.buttons.admin.edit"), edit_admin_subject_path(subject), 
-      class: "btn btn-primary" %>&nbsp;
-    <%= link_to t("subjects.buttons.admin.delete"), admin_subject_path(subject),
-      method: :delete, data: {confirm: t("subjects.buttons.admin.delete_confirm")}, 
-      class: "btn btn-danger" %>
+  <td class="content">
+    <%= subject.content.html_safe %>
   </td>
+  <td class="during_time"><%= subject.during_time %></td>
 </tr>
 

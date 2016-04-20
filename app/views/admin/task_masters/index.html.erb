@@ -1,18 +1,67 @@
-<div id="tasks">
-  <div class="title">
-    <%= t "subjects.label.task" %>
+<div id="admin-subject-show">
+  <div class="row">
+    <div class="row subject-breadcrumb">
+      <ol class="breadcrumb">
+        <li>
+          <%= link_to t("courses.breadcum.home"), root_url %>
+        </li>
+        <li>
+          <%= link_to t("subjects.breadcum.subjects"), admin_subjects_path %>
+        </li>
+        <li class="active"><%= @subject.name %></li>
+      </ol>
+    </div>
   </div>
-  <table class="table table-striped tbl-task">
-    <thead>
-      <tr>
-        <th class="name"><%= t "tasks.fields.name" %></th>
-        <th class="avatar"><%= t "tasks.fields.image" %></th>
-        <th class="description"><%= t "tasks.fields.description" %></th>
-        <th class="content"><%= t "tasks.fields.content" %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @task_masters %>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-md-2">
+      <%= image_target_tag @subject %>
+    </div>
+    <div class="col-md-8">
+      <h2 class="subject-name"><%= @subject.name %></h2>
+      <div class="description"><%= @subject.description %></div>
+    </div>
+    <div class="col-md-2">
+      <div class="dropdown pull-left">
+        <button id="dLabel" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"
+          class="btn btn-default">
+          <span class="glyphicon glyphicon-align-justify"
+            aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="dLabel">
+            <li>
+              <a  href="<%= edit_admin_subject_path @subject %>">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <%= t"courses.buttons.admin.edit" %>
+              </a>
+            </li>
+            <li>
+              <a href="<%= admin_subject_path @subject %>",
+                data-method="delete",
+                data-confirm="<%= t "messages.delete.confirm" %>">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                <%= t "button.delete" %>
+              </a>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <div class="col-md-10"><%= @subject.content.html_safe %></div>
+  </div>
+  <div id="tasks">
+    <table class="table table-striped tbl-task">
+      <thead>
+        <tr>
+          <th class="name"><%= t "tasks.fields.name" %></th>
+          <th class="avatar"><%= t "tasks.fields.image" %></th>
+          <th class="description"><%= t "tasks.fields.description" %></th>
+          <th class="content"><%= t "tasks.fields.content" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @task_masters %>
+      </tbody>
+    </table>
+  </div>
 </div>

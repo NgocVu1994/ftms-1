@@ -34,10 +34,18 @@
               </div>
               <h2 class="label mbm"><%= t "courses.list_subject" %></h2>
               <ol class="list list--divided list--divided--m list--divided--f
-                list--divided--open mlm--l">
+                list--divided--open mlm--l timeline">
                 <% @user_subjects.each do |user_subject| %>
                   <hr />
-                  <li class="list-item mbm pbm por" id="course-overview">
+                  <li class="time-label">
+                    <span class="bg-red">
+                      <%= pluralize user_subject.during_time, t("courses.day") %>
+                    </span>
+                  </li>
+                  <li>
+                    <i class= "fa <%= style_user_subject_status user_subject.status %>" %></i>
+                  </li>
+                  <li class="list-item mbm pbm por space" id="course-overview">
                     <div class="bucket bucket--flag">
                       <div class="bucket-media dn db--m">
                         <div class="badge">
@@ -100,3 +108,4 @@
     </div>
   </div>
 </div>
+

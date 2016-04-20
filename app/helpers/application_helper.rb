@@ -115,6 +115,17 @@ module ApplicationHelper
     end
   end
 
+  def style_user_subject_status status
+    case status
+    when "init"
+      "bg-green"
+    when "in_progress"
+      "bg-blue"
+    when "finish"
+      "bg-red"
+    end
+  end
+
   def style_course_status status
     case status
     when "init"
