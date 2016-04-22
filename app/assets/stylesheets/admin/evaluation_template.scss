@@ -8,4 +8,35 @@
       text-align: center;
     }
   }
+
+  .label {
+    color: #aebdc1;
+    font-size: 85%;
+    font-weight: 600;
+    letter-spacing: 0.0125em;
+    text-transform: uppercase;
+  }
+
+  .label-modal {
+    padding-top: 10px;
+    color: #32494F;
+    font-size: 100%;
+    font-weight: 600;
+    letter-spacing: 0.0125em;
+    text-transform: uppercase;
+    margin-left: 250px;
+  }
+
+  .modal-body {
+    position: relative;
+    padding: 15px;
+  }
+
+  .modal-content {
+    background-color: #F6F8F8;
+  }
+  
+  .btn-modal {
+    margin-left: 470px;
+  }
 }

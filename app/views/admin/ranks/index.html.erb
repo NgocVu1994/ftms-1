@@ -1,8 +1,22 @@
 <%= render "shared/evaluation_tab", active_tab: Settings.tabs.rank %>
 
 <div id="ranks">
-  <p class="pull-right"><%= link_to t("rank.buttons.create"),
-    new_admin_rank_path, class: "btn btn-success" %></p>
+  <p class="pull-right"><%= link_to t("rank.buttons.new"), "#",
+  data: {toggle: "modal", target: "#RankModal"},
+    class: "btn btn--b btn-block btn-success" %></p>
+  <div id="RankModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-heafer">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="label-modal"><%= t "ranks.new_rank" %></h3>
+        </div>
+        <div class="modal-body">
+          <%= render "new_rank" %>
+        </div>
+      </div>
+    </div>
+  </div>
   <table class="table table-striped tbl-rank">
     <thead>
       <tr>

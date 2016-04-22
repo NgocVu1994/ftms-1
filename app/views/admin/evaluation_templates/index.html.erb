@@ -1,8 +1,22 @@
 <%= render "shared/evaluation_tab", active_tab: Settings.tabs.evaluation_templete %>
 
 <div id="evaluation-templates">
-  <p class="pull-right"><%= link_to t("evaluation_template.buttons.create"),
-    new_admin_evaluation_template_path, class: "btn btn-success" %></p>
+  <p class="pull-right"><%= link_to t("button.new"), "#",
+    data: {toggle: "modal", target: "#EvaluationTemplateModal"},
+    class: "btn btn--b btn-block btn-success" %></p>
+  <div id="EvaluationTemplateModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-heafer">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="label-modal"><%= t "evaluation_templates.new_evaluation_template" %></h3>
+        </div>
+        <div class="modal-body">
+          <%= render "new_evaluation_template" %>
+        </div>
+      </div>
+    </div>
+  </div>
   <table class="table table-striped tbl-evaluation-template">
     <thead>
       <tr>
