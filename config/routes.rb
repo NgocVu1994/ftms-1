@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, path: "auth", path_names: {sign_in: "login", sign_out: "logout"}
 
   namespace :admin do
+    resources :user_tasks, only: [:update, :edit]
     resources :course_masters
     resources :courses do
       resources :subjects, only: :show

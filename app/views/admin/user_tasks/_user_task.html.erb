@@ -20,6 +20,21 @@
       <% end %>
     </td>
   <% end %>
-  <td class="update"><%= link_to t("subjects.table.task_update"),
-    edit_user_task_path(user_task) %></td>
+  <td>
+    <%= link_to t("subjects.task.update"), "#", class: "db di--m tch tsxs",
+      data: {toggle: "modal", target: "#user-task-#{user_task.id}"} %>
+    <div id="user-task-<%= user_task.id %>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="label-modal"><%= t "tasks.update" %></h4>
+          </div>
+          <div class="modal-body modal-user-task">
+            <%= render partial: "admin/user_tasks/edit", locals: {user_task: user_task} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </td>
 </tr>

@@ -62,4 +62,35 @@
     color: #D02421;
     padding-left: 10px;
   }
+
+  .label-modal {
+    color: #444;
+    font-size: 85%;
+    font-weight: 600;
+    letter-spacing: 0.0125em;
+    text-transform: uppercase;
+    margin-left: 250px;
+  }
+  
+  .label-user-task {
+    margin-top: 5px;
+  }
+
+  .modal-body {
+    position: relative;
+    padding: 15px;
+    padding-top: 0px;
+  }
+
+  .modal-dialog {
+    margin-top: 10px !important;
+  }
+
+  .modal-content {
+    background-color: #F6F8F8;
+  }
+
+  .btn-modal {
+    margin-left: 470px;
+  }
 }

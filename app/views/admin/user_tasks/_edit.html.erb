@@ -1,0 +1,29 @@
+<%= form_for user_task, url: admin_user_task_path(user_task) do |f| %>
+  <div class="row">
+    <%= render "shared/error_messages", object: user_task %>
+    <div class="col-md-8 col-md-offset-2">
+      <%= f.label :estimated_time, class: "label-user-task" %>
+      <%= f.text_field :estimated_time, class: "form-control",
+        required: true %>
+
+      <%= f.label :spent_time, class: "label-user-task" %>
+      <%= f.text_field :spent_time, class: "form-control" %>
+
+      <%= f.label :redmine_task_id, class: "label-user-task" %>
+      <%= f.text_field :redmine_task_id, class: "form-control",
+        required: true %>
+
+      <%= f.label :progress, class: "label-user-task" %>
+      <%= f.number_field :progress, min: 0, max: 100, class: "form-control" %>
+
+      <%= f.label :status, class: "label-user-task" %>
+      <div class: "form-control">
+        <%= f.select :status, options_for_select(Settings.tasks.statuses,
+          selected: f.object.status), {}, class: "form-control" %>
+      </div></br>
+    </div>
+    <div class="col-md-2 col-md-offset-8">
+      <%= f.submit t("tasks.update"), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
