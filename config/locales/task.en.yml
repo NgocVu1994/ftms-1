@@ -1,5 +1,6 @@
 en:
   tasks:
+    assign: "Assign for: "
     spent_time: "Spent time: "
     hours: "hour(s)"
     estimated_time: "Estimated time: "

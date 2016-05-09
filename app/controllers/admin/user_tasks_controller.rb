@@ -45,7 +45,7 @@ class Admin::UserTasksController < ApplicationController
   end
 
   def load_breadcrumbs
-    add_breadcrumb_courses
+    add_breadcrumb_path "courses"
     add_breadcrumb @course.name, admin_course_path(@course)
     add_breadcrumb @course_subject.subject_name,
       admin_course_subject_path(@course, @course_subject.subject)
